@@ -10,24 +10,27 @@ export default function RecipeForm({ addRecipe }) {
     // After adding, it clears the input fields by resetting `title` and `ingredients` to empty strings.
     const handleSubmit = event => {
         event.preventDefault()
+        if (!title.trim()) return
         addRecipe({ title, ingredients })
         setTitle(``)
         setIngredients(``)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="recipe-form" onSubmit={handleSubmit}>
             <input
                 placeholder="Recipe title"
                 value={title}
-                onChange ={event => setTitle(event.target.value)}
+                onChange={event => setTitle(event.target.value)}
             />
             <textarea
-                placheolder="Ingredients"
+                placeholder="Ingredients"
                 value={ingredients}
                 onChange={event => setIngredients(event.target.value)}
             />
-            <button>Add Recipe</button>
+            <div className="form-actions">
+                <button>Add Recipe</button>
+            </div>
         </form>
     )
 }
