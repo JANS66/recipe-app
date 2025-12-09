@@ -8,8 +8,8 @@ export default function RecipeForm({ addRecipe }) {
     // e.preventDefault() stops the page from reloading on form submit.
     // It calls `addRecipe` with the current `title` and `ingredients` values to update the recipes state.
     // After adding, it clears the input fields by resetting `title` and `ingredients` to empty strings.
-    const handleSubmit = e => {
-        e.preventDefault()
+    const handleSubmit = event => {
+        event.preventDefault()
         addRecipe({ title, ingredients })
         setTitle(``)
         setIngredients(``)
@@ -20,12 +20,12 @@ export default function RecipeForm({ addRecipe }) {
             <input
                 placeholder="Recipe title"
                 value={title}
-                onChange ={e => setTitle(e.target.value)}
+                onChange ={event => setTitle(event.target.value)}
             />
             <textarea
                 placheolder="Ingredients"
                 value={ingredients}
-                onChange={e => setIngredients(e.target.value)}
+                onChange={event => setIngredients(event.target.value)}
             />
             <button>Add Recipe</button>
         </form>
